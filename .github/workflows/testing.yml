@@ -49,6 +49,9 @@ jobs:
             echo "$FASTA_FILE already exists."
           fi
 
+      - name: Link test data into container app directory
+        run: ln -s "$GITHUB_WORKSPACE/.test" /app/.test
+
       - name: Run tests
         run: |
           bash /app/entrypoints/mixer.sh preprocessing -j /app/.test/config.json &&
