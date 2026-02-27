@@ -305,7 +305,7 @@ def normalize_by_autosomal_median(all_dataframes: Dict[str, pd.DataFrame]) -> Tu
     return normalized_dataframes, quarantined_samples
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Create annotated datasets for miXerINO')
+    parser = argparse.ArgumentParser(description='Create annotated datasets for miXer')
     parser.add_argument('-j', '--json', help="Path to the miXer json file", required=True)
 
     args = parser.parse_args()
@@ -326,7 +326,7 @@ if __name__ == "__main__":
     if not os.path.exists(base_outdir):
         os.makedirs(base_outdir)
         
-    dataset_outdir = os.path.join(base_outdir, f"datasets_miXerINO")
+    dataset_outdir = os.path.join(base_outdir, f"datasets_miXer")
     os.makedirs(dataset_outdir, exist_ok=True)
     
     logging.info(f"Output directory: {dataset_outdir}")
@@ -519,7 +519,7 @@ if __name__ == "__main__":
         if file_id not in norm_dict:
             final_df["nrc_poolNorm_normalized"] = np.nan
             
-        final_df.to_csv(os.path.join(dataset_outdir, f"{file_id}_miXerINO_data.tsv"), sep="\t", index=False)
+        final_df.to_csv(os.path.join(dataset_outdir, f"{file_id}_miXer_data.tsv"), sep="\t", index=False)
         
 
     logging.info("Processing complete.")
